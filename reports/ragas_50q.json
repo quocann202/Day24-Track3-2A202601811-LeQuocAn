@@ -1,0 +1,138 @@
+{
+  "total_questions": 50,
+  "per_distribution": {
+    "factual": {
+      "count": 20,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.5385,
+      "context_precision": 0.1696,
+      "context_recall": 0.7304,
+      "avg_score": 0.6096250000000001
+    },
+    "multi_hop": {
+      "count": 20,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.42725,
+      "context_precision": 0.12350000000000001,
+      "context_recall": 0.4264,
+      "avg_score": 0.4942875
+    },
+    "adversarial": {
+      "count": 10,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.602,
+      "context_precision": 0.10729999999999999,
+      "context_recall": 0.3599,
+      "avg_score": 0.5173
+    }
+  },
+  "failure_clusters": {
+    "matrix": {
+      "faithfulness": {
+        "factual": 0,
+        "multi_hop": 0,
+        "adversarial": 0
+      },
+      "context_recall": {
+        "factual": 0,
+        "multi_hop": 0,
+        "adversarial": 0
+      },
+      "context_precision": {
+        "factual": 20,
+        "multi_hop": 20,
+        "adversarial": 10
+      },
+      "answer_relevancy": {
+        "factual": 0,
+        "multi_hop": 0,
+        "adversarial": 0
+      }
+    },
+    "dominant_failure_distribution": "factual",
+    "dominant_failure_metric": "context_precision",
+    "insight": "factual has the most failures; context_precision is the main weak point. Recommended action: Add reranking or metadata filter."
+  },
+  "bottom_10": [
+    {
+      "rank": 1,
+      "question_id": 40,
+      "distribution": "multi_hop",
+      "question": "Nhân viên thử việc tháng thứ 3 phát hiện vi phạm bảo mật. Họ nên và không nên làm gì theo chính sách?",
+      "avg_score": 0.3765,
+      "worst_metric": "context_precision"
+    },
+    {
+      "rank": 2,
+      "question_id": 50,
+      "distribution": "adversarial",
+      "question": "Nhân viên Manager có thể dùng VPN cá nhân (như NordVPN) khi WFH để tăng bảo mật thêm không?",
+      "avg_score": 0.3785,
+      "worst_metric": "context_precision"
+    },
+    {
+      "rank": 3,
+      "question_id": 34,
+      "distribution": "multi_hop",
+      "question": "Nhân viên tạm ứng 4 triệu và một nhân viên khác tạm ứng 7 triệu: quy trình phê duyệt khác nhau thế nào?",
+      "avg_score": 0.4235,
+      "worst_metric": "context_precision"
+    },
+    {
+      "rank": 4,
+      "question_id": 33,
+      "distribution": "multi_hop",
+      "question": "Nhân viên Manager có thâm niên 12 năm: tổng phụ cấp hàng tháng và số ngày phép năm theo v2024 là bao nhiêu?",
+      "avg_score": 0.428,
+      "worst_metric": "context_precision"
+    },
+    {
+      "rank": 5,
+      "question_id": 22,
+      "distribution": "multi_hop",
+      "question": "Nếu cần mua một chiếc laptop 30 triệu cho nhân viên mới, ai phê duyệt và cần gì từ phòng CNTT?",
+      "avg_score": 0.4415,
+      "worst_metric": "context_precision"
+    },
+    {
+      "rank": 6,
+      "question_id": 39,
+      "distribution": "multi_hop",
+      "question": "So sánh yêu cầu mật khẩu giữa policy v1.0 và v2.0 về độ dài tối thiểu, thời hạn đổi và MFA.",
+      "avg_score": 0.4433,
+      "worst_metric": "context_precision"
+    },
+    {
+      "rank": 7,
+      "question_id": 38,
+      "distribution": "multi_hop",
+      "question": "Nhân viên đi công tác nước ngoài 4 ngày tại thành phố lớn, ở khách sạn 200 USD/đêm (3 đêm). Công ty thanh toán bao nhiêu tiền khách sạn?",
+      "avg_score": 0.4448,
+      "worst_metric": "context_precision"
+    },
+    {
+      "rank": 8,
+      "question_id": 49,
+      "distribution": "adversarial",
+      "question": "Theo chính sách nghỉ phép cũ (v2023), nhân viên được nghỉ bao nhiêu ngày? Còn chính sách nào đang có hiệu lực hiện tại?",
+      "avg_score": 0.4452,
+      "worst_metric": "context_precision"
+    },
+    {
+      "rank": 9,
+      "question_id": 21,
+      "distribution": "multi_hop",
+      "question": "Một nhân viên Senior có 9 năm thâm niên được nghỉ bao nhiêu ngày phép năm và lương trong khoảng nào?",
+      "avg_score": 0.4475,
+      "worst_metric": "context_precision"
+    },
+    {
+      "rank": 10,
+      "question_id": 31,
+      "distribution": "multi_hop",
+      "question": "Nhân viên đi công tác trong nước 2 ngày, ở khách sạn giá 1.500.000 VNĐ/đêm. Công ty thanh toán tối đa bao nhiêu cho tiền khách sạn?",
+      "avg_score": 0.4638,
+      "worst_metric": "context_precision"
+    }
+  ]
+}

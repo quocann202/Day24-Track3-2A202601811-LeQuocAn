@@ -4,6 +4,8 @@ __pycache__/
 .python-version
 *.egg-info/
 .venv/
+.venv312/
+.day18_source/
 venv/
 answers_50q.json
 reports/*.json

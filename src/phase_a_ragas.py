@@ -110,12 +110,16 @@ def group_by_distribution(test_set: list[dict]) -> dict[str, list[dict]]:
     Returns:
         {"factual": [...], "multi_hop": [...], "adversarial": [...]}
     """
-    # TODO: Implement
+    # Group only known distributions so malformed input cannot change the contract.
     # groups = {"factual": [], "multi_hop": [], "adversarial": []}
     # for item in test_set:
     #     groups[item["distribution"]].append(item)
     # return groups
-    return {"factual": [], "multi_hop": [], "adversarial": []}
+    groups = {"factual": [], "multi_hop": [], "adversarial": []}
+    for item in test_set:
+        if item.get("distribution") in groups:
+            groups[item["distribution"]].append(item)
+    return groups
 
 
 def run_ragas_50q(answers: list[dict]) -> list[RagasResult]:
@@ -130,7 +134,7 @@ def run_ragas_50q(answers: list[dict]) -> list[RagasResult]:
         3. Kết hợp kết quả với distribution info từ answers list
         4. Return list[RagasResult]
     """
-    # TODO: Implement
+    # Delegate metric computation to the Day 18 evaluator, then retain per-question metadata.
     # try:
     #     from src.m4_eval import evaluate_ragas
     # except ImportError:
@@ -155,7 +159,20 @@ def run_ragas_50q(answers: list[dict]) -> list[RagasResult]:
     #         context_precision=pq.context_precision, context_recall=pq.context_recall,
     #     ))
     # return results
-    return []
+    try:
+        from src.m4_eval import evaluate_ragas
+    except ImportError as exc:
+        raise RuntimeError("src.m4_eval.evaluate_ragas is required for Phase A") from exc
+    raw = evaluate_ragas([a["question"] for a in answers], [a["answer"] for a in answers],
+                         [a.get("contexts", []) for a in answers], [a["ground_truth"] for a in answers])
+    per_question = raw.get("per_question", []) if isinstance(raw, dict) else []
+    output = []
+    for item, metric in zip(answers, per_question):
+        value = lambda key: float(metric.get(key, 0.0) if isinstance(metric, dict) else getattr(metric, key, 0.0))
+        output.append(RagasResult(item["id"], item["distribution"], item["question"], item["answer"],
+            item.get("contexts", []), item["ground_truth"], value("faithfulness"),
+            value("answer_relevancy"), value("context_precision"), value("context_recall")))
+    return output
 
 
 def bottom_10(results: list[RagasResult]) -> list[dict]:
@@ -166,7 +183,7 @@ def bottom_10(results: list[RagasResult]) -> list[dict]:
           "question": ..., "avg_score": ..., "worst_metric": ...,
           "diagnosis": ..., "suggested_fix": ...}, ...]
     """
-    # TODO: Implement
+    # Sort ascending: rank 1 is the weakest answer.
     # sorted_asc = sorted(results, key=lambda r: r.avg_score)
     # bottom = sorted_asc[:10]
     # output = []
@@ -183,7 +200,14 @@ def bottom_10(results: list[RagasResult]) -> list[dict]:
     #         "suggested_fix": fix,
     #     })
     # return output
-    return []
+    output = []
+    for rank, result in enumerate(sorted(results, key=lambda row: row.avg_score)[:10], 1):
+        diagnosis, suggested_fix = DIAGNOSTIC_TREE[result.worst_metric]
+        output.append({"rank": rank, "question_id": result.question_id,
+            "distribution": result.distribution, "question": result.question,
+            "avg_score": round(result.avg_score, 4), "worst_metric": result.worst_metric,
+            "diagnosis": diagnosis, "suggested_fix": suggested_fix})
+    return output
 
 
 def cluster_analysis(results: list[RagasResult]) -> dict:
@@ -204,7 +228,7 @@ def cluster_analysis(results: list[RagasResult]) -> dict:
           "insight": "..."
         }
     """
-    # TODO: Implement
+    # Count the weakest metric for every distribution.
     # matrix = {
     #     metric: {"factual": 0, "multi_hop": 0, "adversarial": 0}
     #     for metric in DIAGNOSTIC_TREE
@@ -222,7 +246,17 @@ def cluster_analysis(results: list[RagasResult]) -> dict:
     #
     # return {"matrix": matrix, "dominant_failure_distribution": dominant_dist,
     #         "dominant_failure_metric": dominant_metric, "insight": insight}
-    return {}
+    distributions = ("factual", "multi_hop", "adversarial")
+    matrix = {metric: {dist: 0 for dist in distributions} for metric in DIAGNOSTIC_TREE}
+    for result in results:
+        if result.distribution in distributions:
+            matrix[result.worst_metric][result.distribution] += 1
+    dominant_dist = max(distributions, key=lambda dist: sum(row[dist] for row in matrix.values()))
+    dominant_metric = max(matrix, key=lambda metric: sum(matrix[metric].values()))
+    return {"matrix": matrix, "dominant_failure_distribution": dominant_dist,
+            "dominant_failure_metric": dominant_metric,
+            "insight": f"{dominant_dist} has the most failures; {dominant_metric} is the main weak point. "
+                       f"Recommended action: {DIAGNOSTIC_TREE[dominant_metric][1]}."}
 
 
 # ─── Main ─────────────────────────────────────────────────────────────────────

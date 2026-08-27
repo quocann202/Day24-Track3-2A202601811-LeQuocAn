@@ -1,0 +1,231 @@
+{
+  "results": [
+    {
+      "question": "Nhân viên được nghỉ bao nhiêu ngày khi kết hôn?",
+      "answer_a": "Nhân viên được nghỉ 3 ngày làm việc có lương khi kết hôn.",
+      "answer_b": "# Chính sách nghỉ phép đặc biệt > Phiên bản: 1.1 | Ngày hiệu lực: 01/03/2024 | Phòng ban: Nhân sự ## Các trường hợp được nghỉ phép đặc biệt Nhân viên được nghỉ có lương trong các trường hợp sau đây mà không trừ vào phép năm: - **Kết hôn**: 3 ngày làm việc -",
+      "winner_pass1": "B",
+      "winner_pass2": "B",
+      "final_winner": "B",
+      "reasoning_pass1": "Deterministic fallback compared relevance and completeness.",
+      "reasoning_pass2": "Deterministic fallback compared relevance and completeness.",
+      "position_consistent": true,
+      "scores_pass1": {
+        "A": 0.709,
+        "B": 0.85
+      },
+      "scores_pass2": {
+        "A": 0.709,
+        "B": 0.85
+      }
+    },
+    {
+      "question": "Muốn mua thiết bị trị giá 55 triệu cần ai phê duyệt?",
+      "answer_a": "Cần Giám đốc phòng ban phê duyệt.",
+      "answer_b": "VNĐ 3. Chờ phê duyệt theo thẩm quyền tương ứng 4. Phòng Mua sắm đặt hàng và theo dõi giao nhận ## Lưu ý đặc biệt Mua sắm thiết bị CNTT (laptop, server, phần mềm) cần có xác nhận của phòng CNTT về cấu hình kỹ thuật trước khi đề xuất. Đơn hàng khẩn cấp có thể",
+      "winner_pass1": "B",
+      "winner_pass2": "B",
+      "final_winner": "B",
+      "reasoning_pass1": "Deterministic fallback compared relevance and completeness.",
+      "reasoning_pass2": "Deterministic fallback compared relevance and completeness.",
+      "position_consistent": true,
+      "scores_pass1": {
+        "A": 0.507,
+        "B": 0.778
+      },
+      "scores_pass2": {
+        "A": 0.507,
+        "B": 0.778
+      }
+    },
+    {
+      "question": "Thưởng Tết tối thiểu cho nhân viên chính thức có từ 6 tháng trở lên là bao nhiêu?",
+      "answer_a": "Nhân viên được thưởng Tết tối thiểu 1 tháng lương.",
+      "answer_b": "# Chính sách thưởng Tết > Phiên bản: 2.0 | Ngày hiệu lực: 01/11/2024 | Phòng ban: Nhân sự & Tài chính ## Mức thưởng tối thiểu Tất cả nhân viên chính thức có thời gian làm việc từ 6 tháng trở lên được thưởng Tết tối thiểu **1 tháng lương**. Nhân viên dưới 6",
+      "winner_pass1": "B",
+      "winner_pass2": "B",
+      "final_winner": "B",
+      "reasoning_pass1": "Deterministic fallback compared relevance and completeness.",
+      "reasoning_pass2": "Deterministic fallback compared relevance and completeness.",
+      "position_consistent": true,
+      "scores_pass1": {
+        "A": 0.552,
+        "B": 0.893
+      },
+      "scores_pass2": {
+        "A": 0.552,
+        "B": 0.893
+      }
+    },
+    {
+      "question": "Một nhân viên Senior có 9 năm thâm niên được nghỉ bao nhiêu ngày phép năm và lương trong khoảng nào?",
+      "answer_a": "Được nghỉ 18 ngày phép (15 cơ bản + 3 thâm niên). Lương Senior từ 20 đến 35 triệu.",
+      "answer_b": "có giấy tờ y tế hợp lệ, ngày nghỉ sẽ bị trừ vào phép năm. ## Chế độ bảo hiểm Nhân viên được hưởng chế độ nghỉ ốm tối đa **30 ngày/năm** theo bảo hiểm xã hội. Trong thời gian nghỉ ốm có bảo hiểm, nhân viên được hưởng 75% mức lương đóng bảo hiểm. Công ty bổ sung",
+      "winner_pass1": "B",
+      "winner_pass2": "B",
+      "final_winner": "B",
+      "reasoning_pass1": "Deterministic fallback compared relevance and completeness.",
+      "reasoning_pass2": "Deterministic fallback compared relevance and completeness.",
+      "position_consistent": true,
+      "scores_pass1": {
+        "A": 0.571,
+        "B": 0.765
+      },
+      "scores_pass2": {
+        "A": 0.571,
+        "B": 0.765
+      }
+    },
+    {
+      "question": "Nhân viên được tài trợ khóa học 25 triệu, nghỉ việc sau 8 tháng. Phải hoàn trả bao nhiêu?",
+      "answer_a": "Hoàn trả 25 triệu vì chưa đủ 1 năm cam kết.",
+      "answer_b": "lên**. Chi phí được tài trợ tối đa **30.000.000 VNĐ/khóa** và cần phê duyệt của Giám đốc phòng ban. ## Cam kết hoàn chi Nhân viên được tài trợ đào tạo phải **cam kết làm việc tại công ty ít nhất 1 năm** sau khi hoàn thành khóa học. Nếu nghỉ việc trước thời",
+      "winner_pass1": "B",
+      "winner_pass2": "B",
+      "final_winner": "B",
+      "reasoning_pass1": "Deterministic fallback compared relevance and completeness.",
+      "reasoning_pass2": "Deterministic fallback compared relevance and completeness.",
+      "position_consistent": true,
+      "scores_pass1": {
+        "A": 0.383,
+        "B": 0.853
+      },
+      "scores_pass2": {
+        "A": 0.383,
+        "B": 0.853
+      }
+    },
+    {
+      "question": "Nhân viên tạm ứng 8 triệu, chưa thanh toán sau 30 ngày. Ai phê duyệt và phí phạt là bao nhiêu?",
+      "answer_a": "Trưởng phòng phê duyệt. Phạt 2% tháng trên 8 triệu.",
+      "answer_b": "sau 15 ngày sẽ bị tính phí **2%/tháng** trên số tiền chưa hoàn ứng. Phí này được khấu trừ vào lương tháng kế tiếp. Nhân viên có khoản tạm ứng chưa thanh toán sẽ không được phê duyệt tạm ứng mới. ## Phê duyệt Tạm ứng dưới 5.000.000 VNĐ: trưởng phòng phê duyệt.",
+      "winner_pass1": "B",
+      "winner_pass2": "B",
+      "final_winner": "B",
+      "reasoning_pass1": "Deterministic fallback compared relevance and completeness.",
+      "reasoning_pass2": "Deterministic fallback compared relevance and completeness.",
+      "position_consistent": true,
+      "scores_pass1": {
+        "A": 0.428,
+        "B": 0.875
+      },
+      "scores_pass2": {
+        "A": 0.428,
+        "B": 0.875
+      }
+    },
+    {
+      "question": "Nhân viên Manager có thâm niên 12 năm: tổng phụ cấp hàng tháng và số ngày phép năm?",
+      "answer_a": "Phép: 19 ngày. Phụ cấp: 1.500.000 VNĐ/tháng.",
+      "answer_b": "Nhân viên vào công ty giữa năm sẽ được tính pro-rata theo số tháng làm việc thực tế. ## Thâm niên công tác Nhân viên có thâm niên từ **5 năm trở lên** được cộng thêm **1 ngày phép** cho mỗi 5 năm làm việc liên tục. Ví dụ: nhân viên 10 năm thâm niên được 14",
+      "winner_pass1": "B",
+      "winner_pass2": "B",
+      "final_winner": "B",
+      "reasoning_pass1": "Deterministic fallback compared relevance and completeness.",
+      "reasoning_pass2": "Deterministic fallback compared relevance and completeness.",
+      "position_consistent": true,
+      "scores_pass1": {
+        "A": 0.474,
+        "B": 0.786
+      },
+      "scores_pass2": {
+        "A": 0.474,
+        "B": 0.786
+      }
+    },
+    {
+      "question": "Nhân viên được nghỉ bao nhiêu ngày phép năm?",
+      "answer_a": "Nhân viên được nghỉ 12 ngày phép năm.",
+      "answer_b": "có giấy tờ y tế hợp lệ, ngày nghỉ sẽ bị trừ vào phép năm. ## Chế độ bảo hiểm Nhân viên được hưởng chế độ nghỉ ốm tối đa **30 ngày/năm** theo bảo hiểm xã hội. Trong thời gian nghỉ ốm có bảo hiểm, nhân viên được hưởng 75% mức lương đóng bảo hiểm. Công ty bổ sung",
+      "winner_pass1": "B",
+      "winner_pass2": "B",
+      "final_winner": "B",
+      "reasoning_pass1": "Deterministic fallback compared relevance and completeness.",
+      "reasoning_pass2": "Deterministic fallback compared relevance and completeness.",
+      "position_consistent": true,
+      "scores_pass1": {
+        "A": 0.677,
+        "B": 0.889
+      },
+      "scores_pass2": {
+        "A": 0.677,
+        "B": 0.889
+      }
+    },
+    {
+      "question": "Nhân viên thử việc có được nghỉ phép năm không?",
+      "answer_a": "Nhân viên thử việc không được nghỉ phép năm và phải xin nghỉ không lương nếu cần.",
+      "answer_b": "# Chính sách nghỉ phép đặc biệt > Phiên bản: 1.1 | Ngày hiệu lực: 01/03/2024 | Phòng ban: Nhân sự ## Các trường hợp được nghỉ phép đặc biệt Nhân viên được nghỉ có lương trong các trường hợp sau đây mà không trừ vào phép năm: - **Kết hôn**: 3 ngày làm việc -",
+      "winner_pass1": "B",
+      "winner_pass2": "B",
+      "final_winner": "B",
+      "reasoning_pass1": "Deterministic fallback compared relevance and completeness.",
+      "reasoning_pass2": "Deterministic fallback compared relevance and completeness.",
+      "position_consistent": true,
+      "scores_pass1": {
+        "A": 0.834,
+        "B": 0.944
+      },
+      "scores_pass2": {
+        "A": 0.834,
+        "B": 0.944
+      }
+    },
+    {
+      "question": "Nhân viên Manager có thể dùng VPN cá nhân (NordVPN) khi WFH không?",
+      "answer_a": "Được, miễn là đảm bảo kết nối an toàn.",
+      "answer_b": "Một số vị trí không được áp dụng WFH: lễ tân, nhân viên kho, bảo vệ, nhân viên vận hành hạ tầng IT. Trong các tuần có sự kiện toàn công ty (All-hands, Team building), WFH không được áp dụng. ## Đánh giá Quyền WFH có thể bị thu hồi nếu nhân viên không đáp ứng",
+      "winner_pass1": "B",
+      "winner_pass2": "B",
+      "final_winner": "B",
+      "reasoning_pass1": "Deterministic fallback compared relevance and completeness.",
+      "reasoning_pass2": "Deterministic fallback compared relevance and completeness.",
+      "position_consistent": true,
+      "scores_pass1": {
+        "A": 0.29,
+        "B": 0.75
+      },
+      "scores_pass2": {
+        "A": 0.29,
+        "B": 0.75
+      }
+    }
+  ],
+  "human_labels": [
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0
+  ],
+  "judge_labels": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "cohen_kappa": 0.0,
+  "bias": {
+    "total_judged": 10,
+    "position_bias_rate": 0.0,
+    "position_bias_count": 0,
+    "verbosity_bias": 1.0,
+    "verbosity_details": {
+      "a_wins_a_longer": 0,
+      "b_wins_b_longer": 10,
+      "total_decisive": 10
+    },
+    "interpretation": "Position bias is low; judge order is stable."
+  }
+}
