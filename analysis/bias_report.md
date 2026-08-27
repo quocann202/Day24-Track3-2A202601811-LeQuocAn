@@ -1,74 +1,22 @@
 # LLM Judge Bias Report — Phase B
 
-**Sinh viên:** [Họ Tên]  
-**Ngày:** [Ngày làm lab]  
-**Judge model:** gpt-4o-mini
+**Student:** Le Quoc An
+**Date:** 2026-08-27
+**Judge mode:** deterministic offline fallback (not a live GPT-4o-mini judgement)
 
----
+## Results
 
-## 1. Pairwise Judge Results
+Ten human-labelled questions were compared between the human reference answer (A) and the local retrieval answer (B). The fallback selected B in every pair because its lexical relevance/completeness score favoured long policy excerpts.
 
-*(Chạy pairwise_judge() trên ít nhất 5 cặp answers)*
+| Measure | Result |
+|---|---:|
+| Evaluated pairs | 10 |
+| Position-inconsistent pairs | 0 |
+| Position bias rate | 0.0% |
+| Cohen's κ vs human labels | 0.000 |
+| Decisive results preferring the longer answer | 10/10 |
+| Verbosity bias | 100.0% |
 
-| # | Question (tóm tắt) | Winner | Reasoning tóm tắt |
-|---|---|---|---|
-| 1 | | | |
-| 2 | | | |
-| ... | | | |
+The two swap passes produced the same original-order winner for all ten questions, so this implementation shows no measured position bias. However, the fallback has severe verbosity bias: it rewards long retrieved passages over concise correct answers. This also explains κ = 0.0; it must not be interpreted as evidence that an LLM judge is unreliable.
 
----
-
-## 2. Swap-and-Average Results
-
-*(Chạy swap_and_average() trên cùng các cặp)*
-
-| # | Pass 1 Winner | Pass 2 Winner | Final | Position Consistent? |
-|---|---|---|---|---|
-| 1 | | | | |
-| 2 | | | | |
-
-**Position bias rate:** ?% (= số case NOT consistent / tổng)
-
----
-
-## 3. Cohen's κ Analysis
-
-**Human labels:** `human_labels_10q.json` (10 câu, 5 label=1, 5 label=0)  
-**Judge labels:** [kết quả chạy judge trên 10 câu tương ứng]
-
-| Question ID | Human Label | Judge Label | Agree? |
-|---|---|---|---|
-| 1 | | | |
-| 5 | | | |
-| 12 | | | |
-| 21 | | | |
-| 23 | | | |
-| 29 | | | |
-| 33 | | | |
-| 41 | | | |
-| 46 | | | |
-| 50 | | | |
-
-**Cohen's κ:** ?  
-**Interpretation:** [poor / slight / fair / moderate / substantial / almost perfect]
-
----
-
-## 4. Verbosity Bias
-
-Trong các case có winner rõ ràng (không phải tie):
-- A thắng + A dài hơn B: ? / ? cases
-- B thắng + B dài hơn A: ? / ? cases  
-- **Verbosity bias rate:** ?%
-
-**Kết luận:** [LLM có xu hướng chọn answer dài hơn không? Tại sao điều này là vấn đề?]
-
----
-
-## 5. Nhận xét chung
-
-> [Viết 3-5 câu nhận xét:
->  - κ > 0.6 chưa? LLM judge đáng tin không?
->  - Position bias đáng lo ngại không (>30%)?
->  - Swap-and-average có thực sự giúp ích không?
->  - Trong môi trường production, nên dùng judge như thế nào?]
+For production, run the same pairwise protocol with the configured LLM and the strict JSON rubric, retain swap-and-average, and monitor both κ and verbosity bias. A concise-answer penalty or explicit citation/accuracy criterion should prevent long context excerpts from winning merely because they contain more overlapping terms.

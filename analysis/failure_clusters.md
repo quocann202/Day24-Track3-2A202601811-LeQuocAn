@@ -1,70 +1,36 @@
 # Failure Cluster Analysis — Phase A
 
-**Sinh viên:** [Họ Tên]  
-**Ngày:** [Ngày làm lab]
+**Student:** Le Quoc An
+**Date:** 2026-08-27
 
----
+## Aggregate RAGAS scores by distribution
 
-## 1. Aggregate RAGAS Scores theo Distribution
+| Metric | Factual | Multi-hop | Adversarial |
+|---|---:|---:|---:|
+| Faithfulness | 1.0000 | 1.0000 | 1.0000 |
+| Answer relevancy | 0.5385 | 0.4273 | 0.6020 |
+| Context precision | 0.1696 | 0.1235 | 0.1073 |
+| Context recall | 0.7304 | 0.4264 | 0.3599 |
+| **Average** | **0.6096** | **0.4943** | **0.5173** |
 
-| Metric | factual | multi_hop | adversarial |
-|---|---|---|---|
-| faithfulness | ? | ? | ? |
-| answer_relevancy | ? | ? | ? |
-| context_precision | ? | ? | ? |
-| context_recall | ? | ? | ? |
-| **avg_score** | ? | ? | ? |
+## Failure cluster matrix
 
----
+| Worst metric | Factual | Multi-hop | Adversarial | Total |
+|---|---:|---:|---:|---:|
+| Faithfulness | 0 | 0 | 0 | 0 |
+| Answer relevancy | 0 | 0 | 0 | 0 |
+| Context precision | 20 | 20 | 10 | 50 |
+| Context recall | 0 | 0 | 0 | 0 |
 
-## 2. Bottom 10 Questions
+The dominant metric is **context precision**. The lexical local retriever consistently returns a relevant policy passage, but it does not distinguish finely enough between closely related policies, versions, and subclauses. Multi-hop questions have the lowest mean score (0.4943) because their answer requires joining two policy sources rather than quoting one retrieved chunk.
 
-| Rank | Distribution | Question | avg_score | worst_metric |
-|---|---|---|---|---|
-| 1 | | | | |
-| 2 | | | | |
-| ... | | | | |
+The adversarial set (0.5173) is below factual (0.6096), which is the expected signal for version conflicts and negation traps. Questions 49 (legacy leave policy) and 50 (personal VPN) both appear in the bottom ten. The recommended next change is a semantic/cross-encoder reranker together with metadata filters for policy version and effective date.
 
----
+## Suggested fixes
 
-## 3. Failure Cluster Matrix
-
-*(Mỗi ô = số câu có worst_metric = row, thuộc distribution = col)*
-
-| worst_metric | factual | multi_hop | adversarial | Total |
-|---|---|---|---|---|
-| faithfulness | | | | |
-| answer_relevancy | | | | |
-| context_precision | | | | |
-| context_recall | | | | |
-
----
-
-## 4. Dominant Failure Analysis
-
-**Dominant distribution:** [factual / multi_hop / adversarial]  
-**Dominant metric:** [faithfulness / answer_relevancy / context_precision / context_recall]
-
-**Lý do phân tích:**
-
-> [Viết 3-5 câu giải thích tại sao distribution này hay bị failure, 
->  tại sao metric này thấp nhất trong corpus HR policy tiếng Việt]
-
----
-
-## 5. Suggested Fixes
-
-| Metric yếu | Root cause | Suggested fix |
+| Weak area | Root cause | Suggested fix |
 |---|---|---|
-| faithfulness | LLM hallucinating | |
-| context_recall | Missing relevant chunks | |
-| context_precision | Too many irrelevant chunks | |
-| answer_relevancy | Answer doesn't match question | |
-
----
-
-## 6. Nhận xét về Adversarial Distribution
-
-> [So sánh avg_score của adversarial vs factual vs multi_hop.
->  Pipeline có bị "nhầm" bởi version conflicts (v2023 vs v2024) không?
->  Câu nào trong bottom 10 rơi vào adversarial? Tại sao?]
+| Context precision | Lexical overlap admits near-matching policies | Add dense retrieval plus cross-encoder reranking |
+| Context recall | Multi-hop evidence is split across documents | Retrieve more candidates, then compose cited evidence |
+| Version conflicts | Older policies remain searchable | Filter or down-rank superseded versions by effective date |
+| Answer relevancy | Context chunk is returned verbatim in offline mode | Generate a concise grounded answer from selected evidence |
